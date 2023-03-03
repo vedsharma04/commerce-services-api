@@ -2,6 +2,7 @@ const config = require("./config/environment");
 const express = require("express");
 const mongoose = require("mongoose");
 
+const { handleError } = require("./middlewares/errorMiddleware.js");
 const logger = require("./service/logger")("index");
 const apiRoutes = require("./routes/routes");
 
@@ -26,10 +27,7 @@ dbConnection.once("open", async () => {
         res.status(404).send("<h2>Path not found !!!<h2>");
     });
 
-    app.use((err, req, res, next) => {
-        logger.error(err.stack);
-        res.status(500).send("<h2>Unable to connect to server<h2>");
-    });
+    app.use(handleError);
 
     app.listen(port, () => {
         logger.info(`Server running at port ${port}`);
