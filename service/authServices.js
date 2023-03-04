@@ -98,7 +98,7 @@ const loginService = async (req) => {
                 logger.info(`Wrong passwoed entered for userId: ${userId}`);
                 return {
                     status: "failure",
-                    message: "Wrong password entered. Please enter correct value",
+                    message: "Wrong password entered. Please enter correct password",
                 };
             }
         } else {

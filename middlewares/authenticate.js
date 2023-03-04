@@ -15,13 +15,15 @@ const authenticate = (req, res, next) => {
 
         let result = jwt.verify(token, `${rsaPublicKey}`.replace(/\\n/g, "\n"), { algorithms: ["RS256"] });
         let userId = get(result, "userId", "");
-        let userType = userId.substring(0, 2) == "BY" ? "buyer" : "seller";
-
-        if (req.path.includes(userType)) {
+        let typeVerify = userId.substring(0, 2) == "BY" ? "/buyer/" : "/seller/";
+    
+        if (req.path.includes(typeVerify)) {
             req.apiCalledBy = userId;
             next();
         } else {
-            return res.status(401).json({ status: "failed", message: `Unauthorized. Cannot access route for userId: ${userId}` });
+            let routeAccess = userId.substring(0, 2) != "BY" ? "buyer" : "seller";
+            let userType = userId.substring(0, 2) == "BY" ? "buyer" : "seller";
+            return res.status(401).json({ status: "failed", message: `Unauthorized. Cannot access ${routeAccess} route by ${userType}Id : ${userId}` });
         }
     } catch (error) {
         logger.info(`Error verifying token`, error);

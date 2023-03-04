@@ -23,7 +23,7 @@ const createCatalogService = async (req) => {
             logger.info(`Catalog already available for userId : ${apiCalledBy}`);
             return {
                 status: "failure",
-                message: `Catalog already available for userId : ${apiCalledBy} ,catalogId : ${get(catalogData, "catalogId", "")}`,
+                message: `Catalog already available for seller Id : ${apiCalledBy} ,catalogId : ${get(catalogData, "catalogId", "")}`,
             };
         }
 
@@ -56,7 +56,7 @@ const createCatalogService = async (req) => {
 
             return {
                 status: "success",
-                message: `Successfully added ${productList.length} products in catalog for userId : ${apiCalledBy}`,
+                message: `Successfully added ${productList.length} products in catalog for seller Id : ${apiCalledBy}`,
                 data: {
                     catalogId: get(createdDocument, "catalogId", ""),
                     addedProducts: get(createdDocument, "products", ""),
@@ -67,7 +67,7 @@ const createCatalogService = async (req) => {
             logger.info(`Invalid product details in catalog for userId : ${apiCalledBy} invalid product length : ${invalidProducts.length}`);
             return {
                 status: "failure",
-                message: `Failed to add products in catalog for userId : ${apiCalledBy}. Please provide valid name / price for the products`,
+                message: `Failed to add products in catalog for seller Id : ${apiCalledBy}. Please provide valid name / price for the products`,
                 data: {
                     invalidProducts,
                 },
