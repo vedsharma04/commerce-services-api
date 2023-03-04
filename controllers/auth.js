@@ -6,8 +6,10 @@ const register = async (req, res) => {
         let response = await registerService(req);
 
         if (response.status == "success") {
+            logger.info(`register API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`register API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {
@@ -24,8 +26,10 @@ const login = async (req, res) => {
         let response = await loginService(req);
 
         if (response.status == "success") {
+            logger.info(`login API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`login API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {

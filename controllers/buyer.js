@@ -7,8 +7,10 @@ const listSeller = async (req, res) => {
         let response = await listSellerService(req);
 
         if (response.status == "success") {
+            logger.info(`listSeller API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`listSeller API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {
@@ -25,8 +27,10 @@ const listCatalog = async (req, res) => {
         let response = await listCatalogService(req);
 
         if (response.status == "success") {
+            logger.info(`listCatalog API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`listCatalog API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {
@@ -43,8 +47,10 @@ const createOrder = async (req, res) => {
         let response = await createOrderService(req);
 
         if (response.status == "success") {
+            logger.info(`createOrder API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`createOrder API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {

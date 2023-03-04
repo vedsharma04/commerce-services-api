@@ -7,8 +7,10 @@ const createCatalog = async (req, res) => {
         let response = await createCatalogService(req);
 
         if (response.status == "success") {
+            logger.info(`createCatalog API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`createCatalog API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {
@@ -25,8 +27,10 @@ const listOrders = async (req, res) => {
         let response = await listOrdersService(req);
 
         if (response.status == "success") {
+            logger.info(`listOrders API success`);
             return res.status(200).json(response);
         } else {
+            logger.info(`listOrders API failure`);
             return res.status(400).json(response);
         }
     } catch (error) {
