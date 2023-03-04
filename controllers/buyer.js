@@ -1,11 +1,63 @@
-const listSeller = async (req, res) => {};
+const logger = require("../service/logger")("buyerController");
 
-const listCatalog = async (req, res) => {};
+const { listSellerService, listCatalogService, createOrderService } = require("../service/buyerService");
 
-const createOrder = async (req, res) => {};
+const listSeller = async (req, res) => {
+    try {
+        let response = await listSellerService(req);
+
+        if (response.status == "success") {
+            return res.status(200).json(response);
+        } else {
+            return res.status(400).json(response);
+        }
+    } catch (error) {
+        logger.error(`Error while calling list seller API`, error.message, error);
+        return res.status(500).json({
+            status: "failure",
+            message: "Error while calling list seller API",
+        });
+    }
+};
+
+const listCatalog = async (req, res) => {
+    try {
+        let response = await listCatalogService(req);
+
+        if (response.status == "success") {
+            return res.status(200).json(response);
+        } else {
+            return res.status(400).json(response);
+        }
+    } catch (error) {
+        logger.error(`Error while calling list catalog API`, error.message, error);
+        return res.status(500).json({
+            status: "failure",
+            message: "Error while calling list catalog API",
+        });
+    }
+};
+
+const createOrder = async (req, res) => {
+    try {
+        let response = await createOrderService(req);
+
+        if (response.status == "success") {
+            return res.status(200).json(response);
+        } else {
+            return res.status(400).json(response);
+        }
+    } catch (error) {
+        logger.error(`Error while calling create order API`, error.message, error);
+        return res.status(500).json({
+            status: "failure",
+            message: "Error while calling create order API",
+        });
+    }
+};
 
 module.exports = {
     listSeller,
     listCatalog,
-    createOrder
+    createOrder,
 };
