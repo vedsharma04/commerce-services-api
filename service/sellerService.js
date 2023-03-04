@@ -1,4 +1,4 @@
-const { isEmpty, get } = require("lodash");
+const { isEmpty, get, some } = require("lodash");
 
 const logger = require("../service/logger")("Buyer Service");
 
@@ -7,14 +7,14 @@ const { getUniqueId } = require("./helper/authHelper");
 
 const createCatalogService = async (req) => {
     const { apiCalledBy = "" } = req || {};
-    const { products = [] } = req.body || {};
+    const { products = [], catalogName = "" } = req.body || {};
 
     try {
-        if (isEmpty(products)) {
-            logger.info(`Received empty products for userId : ${apiCalledBy}`);
+        if (some(req.body, isEmpty)) {
+            logger.info(`Received empty details for userId : ${apiCalledBy}`);
             return {
                 status: "failure",
-                message: "Seller id cannot be empty, Please provide valid seller id",
+                message: "Catalog details cannot be empty, Please provide valid details",
             };
         }
 
@@ -49,6 +49,7 @@ const createCatalogService = async (req) => {
             logger.info(`Creating catalog for userId : ${apiCalledBy} of product length : ${productList.length}`);
             let createdDocument = await Catalogs.create({
                 catalogId: `CI-${getUniqueId()}`,
+                catalogName,
                 userId: apiCalledBy,
                 products: productList,
             });

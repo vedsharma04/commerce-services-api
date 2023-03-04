@@ -7,6 +7,7 @@ const schema = new mongoose.Schema(
             required: true,
             unique: true,
         },
+        catalogName: String,
         userId: String,
         products: [
             {

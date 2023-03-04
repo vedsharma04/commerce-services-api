@@ -54,7 +54,7 @@ const listCatalogService = async (req) => {
             };
         }
 
-        let catalogData = await Catalogs.findOne({ userId }, { products: 1, catalogId: 1, _id: 0 }).lean();
+        let catalogData = await Catalogs.findOne({ userId }, { products: 1, catalogId: 1, _id: 0, catalogName: 1 }).lean();
         if (isEmpty(catalogData)) {
             logger.info(`Catalog data empty for sellerId ${userId}`);
             return {
