@@ -15,7 +15,7 @@ const listSeller = async (req, res) => {
         }
     } catch (error) {
         logger.error(`Error while calling list seller API`, error.message, error);
-        return res.status(500).json({
+        return res.status(400).json({
             status: "failure",
             message: "Error while calling list seller API",
         });
@@ -35,7 +35,7 @@ const listCatalog = async (req, res) => {
         }
     } catch (error) {
         logger.error(`Error while calling list catalog API`, error.message, error);
-        return res.status(500).json({
+        return res.status(400).json({
             status: "failure",
             message: "Error while calling list catalog API",
         });
@@ -55,7 +55,7 @@ const createOrder = async (req, res) => {
         }
     } catch (error) {
         logger.error(`Error while calling create order API`, error.message, error);
-        return res.status(500).json({
+        return res.status(400).json({
             status: "failure",
             message: "Error while calling create order API",
         });
