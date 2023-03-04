@@ -49,6 +49,7 @@ const schema = new mongoose.Schema(
         },
         products: [
             {
+                _id: false,
                 productId: String,
                 name: String,
                 price: Number,

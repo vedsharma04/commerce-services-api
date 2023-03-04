@@ -6,6 +6,7 @@ module.exports ={
     auth:{
         saltRounds: process.env.SALT_ROUNDS || 'SALT_ROUNDS',
         rsaPrivateKey: process.env.RSA_PRIVATE_KEY || 'RSA_PRIVATE_KEY',
-        rsaPublicKey: process.env.RSA_PUBLIC_KEY || 'RSA_PUBLIC_KEY'
+        rsaPublicKey: process.env.RSA_PUBLIC_KEY || 'RSA_PUBLIC_KEY',
+        tokenExpiry: process.env.JWT_TOKEN_EXPIRY || 'JWT_TOKEN_EXPIRY'
     }
 }

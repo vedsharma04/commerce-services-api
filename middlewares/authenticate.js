@@ -18,6 +18,7 @@ const authenticate = (req, res, next) => {
         let userType = userId.substring(0, 2) == "BY" ? "buyer" : "seller";
 
         if (req.path.includes(userType)) {
+            req.apiCalledBy = userId;
             next();
         } else {
             return res.status(401).json({ status: "failed", message: `Unauthorized. Cannot access route for userId: ${userId}` });

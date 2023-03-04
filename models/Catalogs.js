@@ -10,6 +10,7 @@ const schema = new mongoose.Schema(
         userId: String,
         products: [
             {
+                _id: false,
                 productId: String,
                 name: String,
                 price: Number,

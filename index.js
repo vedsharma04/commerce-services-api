@@ -24,7 +24,7 @@ dbConnection.once("open", async () => {
 
     app.use("/api", apiRoutes(app));
     app.use((req, res) => {
-        res.status(404).send("<h2>Path not found !!!<h2>");
+        res.status(404).json({ status: "failure", message: "Path not found, Please provide proper route" });
     });
 
     app.use(handleError);

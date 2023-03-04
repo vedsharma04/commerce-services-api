@@ -13,8 +13,8 @@ const register = async (req, res) => {
     } catch (error) {
         logger.error(`Error while calling register API`, error.message, error);
         return res.status(500).json({
-            status: "failed",
-            message: "Error whilc calling register API",
+            status: "failure",
+            message: "Error while calling register API",
         });
     }
 };
@@ -31,8 +31,8 @@ const login = async (req, res) => {
     } catch (error) {
         logger.error(`Error while calling login API`, error.message, error);
         res.status(500).json({
-            status: "failed",
-            message: "Error whilc calling login API",
+            status: "failure",
+            message: "Error while calling login API",
         });
     }
 };
