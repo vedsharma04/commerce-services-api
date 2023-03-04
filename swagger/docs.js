@@ -60,6 +60,9 @@ const swaggerDocument = {
                     400: {
                         description: "Error while registering user",
                     },
+                    500: {
+                        description: "Internal Server Error",
+                    },
                 },
             },
         },
@@ -87,6 +90,9 @@ const swaggerDocument = {
                     400: {
                         description: "Error while user login",
                     },
+                    500: {
+                        description: "Internal Server Error",
+                    },
                 },
             },
         },
@@ -101,6 +107,12 @@ const swaggerDocument = {
                     },
                     400: {
                         description: "Error while fetching list of sellers",
+                    },
+                    401: {
+                        description: "Unauthorized",
+                    },
+                    500: {
+                        description: "Internal Server Error",
                     },
                 },
             },
@@ -125,6 +137,12 @@ const swaggerDocument = {
                     },
                     400: {
                         description: "Error while fetching seller catalog",
+                    },
+                    401: {
+                        description: "Unauthorized",
+                    },
+                    500: {
+                        description: "Internal Server Error",
                     },
                 },
             },
@@ -173,6 +191,12 @@ const swaggerDocument = {
                     400: {
                         description: "Error while creating order",
                     },
+                    401: {
+                        description: "Unauthorized",
+                    },
+                    500: {
+                        description: "Internal Server Error",
+                    },
                 },
             },
         },
@@ -214,6 +238,12 @@ const swaggerDocument = {
                     400: {
                         description: "Error while creating catalog",
                     },
+                    401: {
+                        description: "Unauthorized",
+                    },
+                    500: {
+                        description: "Internal Server Error",
+                    },
                 },
             },
         },
@@ -228,6 +258,12 @@ const swaggerDocument = {
                     },
                     400: {
                         description: "Error while fetching orders",
+                    },
+                    401: {
+                        description: "Unauthorized",
+                    },
+                    500: {
+                        description: "Internal Server Error",
                     },
                 },
             },

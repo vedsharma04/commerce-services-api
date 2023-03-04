@@ -14,7 +14,7 @@ const register = async (req, res) => {
         }
     } catch (error) {
         logger.error(`Error while calling register API`, error.message, error);
-        return res.status(500).json({
+        return res.status(400).json({
             status: "failure",
             message: "Error while calling register API",
         });
@@ -34,7 +34,7 @@ const login = async (req, res) => {
         }
     } catch (error) {
         logger.error(`Error while calling login API`, error.message, error);
-        res.status(500).json({
+        res.status(400).json({
             status: "failure",
             message: "Error while calling login API",
         });
