@@ -141,7 +141,7 @@ const createOrderService = async (req) => {
 
             return {
                 status: "success",
-                message: `Order successfully created for ${productsInOrder.length} with total price : ${totalPrice}`,
+                message: `Order successfully created for ${productsInOrder.length} products with total price : ${totalPrice}`,
                 data: {
                     orderId: get(orderDocument, "orderId", ""),
                     sellerId,
