@@ -13,7 +13,8 @@ const apiRouter = Router();
 module.exports = () => {
     return apiRouter
     .use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-    .use("/auth", authRoutes()).use(authenticate)
+    .use("/auth", authRoutes())
+    .use(authenticate)
     .use("/buyer", buyerRoutes())
     .use("/seller", sellerRoutes());
 };
